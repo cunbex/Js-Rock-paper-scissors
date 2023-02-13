@@ -11,15 +11,20 @@
 
 <body>
   <main>
-    <select name="game" id="game">
-      <option value="rock">Rock</option>
-      <option value="paper">Paper</option>
-      <option value="scissor">Scissor</option>
-      <option value="..." hidden selected="selected">...</option>
-    </select>
-    <button id="submit">Play</button>
-    <p id="computer"></p>
-    <p id="result"></p>
+    <div class="input">
+      <select name="game" id="game">
+        <option value="rock">Rock</option>
+        <option value="paper">Paper</option>
+        <option value="scissor">Scissor</option>
+        <option value="..." hidden selected="selected">...</option>
+      </select>
+      <button id="submit">Play</button>
+    </div>
+    <div class="output">
+      <p id="computer"></p>
+      <p id="result"></p>
+    </div>
+
   </main>
 </body>
 <script src="script/script.js"></script>

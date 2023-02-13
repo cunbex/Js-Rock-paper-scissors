@@ -1,0 +1,45 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+main {
+  height: 50vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 4em;
+}
+.input {
+  display: flex;
+  gap: 3em;
+}
+.input button {
+  padding: 0.3em 1.5em;
+  border-radius: 1em;
+  background-color: blueviolet;
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+  border: none;
+}
+.input button:hover {
+  cursor: pointer;
+}
+.input select {
+  padding: 0.3em 1.5em;
+  border-radius: 2em;
+  border: none;
+  background-color: cadetblue;
+}
+.output {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  font-size: 24px;
+  font-weight: 500;
+}
