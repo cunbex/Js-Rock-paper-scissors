@@ -5,4 +5,4 @@ Simple Rock paper scissors project for https://www.theodinproject.com/lessons/fo
 media screen page was made on: 1600x900 laptop screen.
 
 ps: this is not an advanced javascript project, this project was done in order
-to understand the basics of DOM manipulation and basic javascript conditions.
+to understand the basics of DOM manipulation and basics javascript conditions.
