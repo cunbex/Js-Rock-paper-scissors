@@ -42,4 +42,15 @@ main {
   gap: 1em;
   font-size: 24px;
   font-weight: 500;
+  justify-content: center;
+  align-items: center;
+}
+.gameState {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.gameState h1 {
+  font-size: 18px;
 }
