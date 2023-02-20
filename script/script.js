@@ -1,92 +1,88 @@
-const playButton = document.querySelector("#submit");
-const computer = document.querySelector("#computer");
-const result = document.querySelector("#result");
-const choices = ["rock", "paper", "scissor"];
+const btns = document.querySelectorAll(".choice");
+const round = document.querySelector(".current-round");
+const ptsComputer = document.querySelector(".ptsComputer");
+const ptsPlayer = document.querySelector(".ptsPlayer");
+const gameChoices = ["rock", "paper", "scissor"];
 
-function getComputerChoice() {
-  let choice = choices[Math.floor(Math.random() * 3)];
-  return choice;
+btns.forEach((btn) => btn.addEventListener("click", playRound));
+
+function playRound(e) {
+  if (!e) {
+    alert("problem");
+    return;
+  }
+  let computerPick = getComputerChoice();
+  let playerPick = getPlayerChoice(e);
+  let result = roundResult(playerPick, computerPick);
+  incriment(
+    round.innerText,
+    result,
+    ptsPlayer.innerText,
+    ptsComputer.innerText
+  );
 }
-function getPlayerChoice() {
-  let choice = document.querySelector("#game");
-  return choice.value;
-}
-function incrementPlayerScore() {
-  let playerScore = document.querySelector("#playerScore");
-  let number = playerScore.innerHTML;
-  number++;
-  playerScore.innerHTML = number;
-}
-function incrementComputerScore() {
-  let computerScore = document.querySelector("#computerScore");
-  let number = computerScore.innerHTML;
-  number++;
-  computerScore.innerHTML = number;
-}
-playButton.addEventListener("click", () => {
-  let computerChoice = getComputerChoice();
-  let playerChoice = getPlayerChoice();
-  let round = document.querySelector("#round");
-  let number = round.innerHTML;
-  number++;
-  round.innerHTML = number;
+
+function roundResult(player, computer) {
   switch (true) {
-    case computerChoice === "paper":
+    case player == computer:
+      return "tie";
+    case player == "rock":
       switch (true) {
-        case playerChoice === "scissor":
-          computer.innerHTML = `The robot has chosen ${computerChoice}`;
-          result.innerHTML = "YOU WIN";
-          incrementPlayerScore();
-          break;
-        case playerChoice === "rock":
-          computer.innerHTML = `The robot has chosen ${computerChoice}`;
-          result.innerHTML = "YOU LOSE";
-          incrementComputerScore();
-          break;
+        case computer == "scissor":
+          return "win";
         default:
-          computer.innerHTML = `The robot has chosen ${computerChoice}`;
-          result.innerHTML = "TIE";
-          break;
+          return "lose";
       }
-      break;
-    case computerChoice === "scissor":
+    case player == "scissor":
       switch (true) {
-        case playerChoice === "rock":
-          computer.innerHTML = `The robot has chosen ${computerChoice}`;
-          result.innerHTML = "YOU WIN";
-          incrementPlayerScore();
-          break;
-        case playerChoice === "paper":
-          computer.innerHTML = `The robot has chosen ${computerChoice}`;
-          result.innerHTML = "YOU LOSE";
-          incrementComputerScore();
-          break;
+        case computer == "paper":
+          return "win";
         default:
-          computer.innerHTML = `The robot has chosen ${computerChoice}`;
-          result.innerHTML = "TIE";
-          break;
+          return "lose";
       }
-      break;
-    case computerChoice === "rock":
+    case player == "paper":
       switch (true) {
-        case playerChoice === "paper":
-          computer.innerHTML = `The robot has chosen ${computerChoice}`;
-          result.innerHTML = "YOU WIN";
-          incrementPlayerScore();
-          break;
-        case playerChoice === "scissor":
-          computer.innerHTML = `The robot has chosen ${computerChoice}`;
-          result.innerHTML = "YOU LOSE";
-          incrementComputerScore();
-          break;
+        case computer == "rock":
+          return "win";
         default:
-          computer.innerHTML = `The robot has chosen ${computerChoice}`;
-          result.innerHTML = "TIE";
-          break;
+          return "lose";
       }
-      break;
     default:
-      alert("unknown error");
+      alert("unkonwn error");
       break;
   }
-});
+}
+function getComputerChoice() {
+  let pick = gameChoices[Math.floor(Math.random() * 3)];
+  const computerChoice = document.querySelector(".computerChoice");
+  computerChoice.innerText = pick;
+  return pick;
+}
+
+function getPlayerChoice(e) {
+  if (!e) {
+    alert("Error in player choice, function getPlayerChoice");
+    return;
+  }
+  let pick = e.target.innerText.toLowerCase();
+  const playerChoice = document.querySelector(".playerChoice");
+  playerChoice.innerText = pick;
+  return pick;
+}
+
+function incriment(currentRound, state, playerScore, computerScore) {
+  round.innerText = `${parseInt(currentRound) + 1}`;
+  switch (state) {
+    case "win":
+      ptsPlayer.innerText = `${parseInt(playerScore) + 1}`;
+      window.confirm("You Won!");
+      break;
+    case "lose":
+      ptsComputer.innerText = `${parseInt(computerScore) + 1}`;
+      window.confirm("You Lost!");
+      break;
+    default:
+      window.confirm("Its a Tie!");
+      break;
+  }
+}

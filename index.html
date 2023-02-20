@@ -6,32 +6,36 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./style/style.css">
+  <script src="script/script.js" defer></script>
   <title>rock, paper, scissors</title>
 </head>
 
 <body>
   <main>
-    <div class="gameState">
-      <h1>Round: <span id="round">0</span></h1>
-      <h1>Your score is: <span id="playerScore">0</span></h1>
-      <h1>Computer score is: <span id="computerScore">0</span></h1>
-    </div>
-    <div class="input">
-      <select name="game" id="game">
-        <option value="rock">Rock</option>
-        <option value="paper">Paper</option>
-        <option value="scissor">Scissor</option>
-        <option value="..." hidden selected="selected">...</option>
-      </select>
-      <button id="submit">Play</button>
-    </div>
-    <div class="output">
-      <p id="computer"></p>
-      <p id="result"></p>
-    </div>
+    <section class="stats-section">
+      <div class="round">
+        <h1>Round: <span class="current-round">1</span></h1>
+      </div>
+      <div class="stats-card">
+        <div class="player-side">
+          <h1>Your score: <span class="ptsPlayer">0</span></h1>
+          <h1>Last Round: <span class="playerChoice"></span></h1>
+        </div>
+        <div class="computer-side">
+          <h1>Computer score: <span class="ptsComputer">0</span></h1>
+          <h1>Last Round: <span class="computerChoice"></span></h1>
+        </div>
 
+      </div>
+    </section>
+    <section class="animation-section"></section>
+    <section class="choices-section">
+      <button class="choice">Paper</button>
+      <button class="choice">Rock</button>
+      <button class="choice">Scissor</button>
+    </section>
   </main>
 </body>
-<script src="script/script.js"></script>
+
 
 </html>
